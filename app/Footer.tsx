@@ -82,7 +82,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="w-full place-self-end h-[40px] flex justify-center items-center bottom text-white bg-gray-950  ">
-        <p>© 2023 M'I'E Projects </p>
+        <p>© 2023 MIE Projects </p>
       </div>
     </div>
   );

@@ -65,7 +65,7 @@ const Loginpage = (props: { hideModal(): void }) => {
               </button>
               <div className=" flex font-bold">
                 <p className="mt-10">
-                  Don't have an account?{" "}
+                  Dont have an account?{" "}
                   <Link href={"/login/signup"}>
                     <span className="text-yellow-900">Sign Up</span>{" "}
                   </Link>{" "}
