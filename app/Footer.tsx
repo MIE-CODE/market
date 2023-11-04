@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="w-screen place-self-end h-[500px] from-gray-600 to-gray-950 bg-gradient-to-b ">
+    <div className="w-full sm:w-full place-self-end from-gray-600 to-gray-950 bg-gradient-to-b ">
       <div className="p-[30px] pt-32 flex justify-between ">
         <div className="">
           {" "}
@@ -81,7 +81,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="w-full place-self-end h-[40px] flex justify-center items-center bottom text-white bg-gray-950  ">
+      <div className="w-full mt-[130px] h-[40px] flex justify-center items-center text-white bg-gray-950  ">
         <p>© 2023 MIE Projects </p>
       </div>
     </div>

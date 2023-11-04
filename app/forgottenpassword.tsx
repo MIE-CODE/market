@@ -1,8 +1,7 @@
-import Link from "next/link";
 import React from "react";
-import { createContext, useContext, useState } from "react";
+import Link from "next/link";
 
-const Loginpage = () => {
+const forgottenpassword = () => {
   return (
     <main className="">
       <div className="flex  ">
@@ -124,4 +123,4 @@ const Loginpage = () => {
   );
 };
 
-export default Loginpage;
+export default forgottenpassword;
