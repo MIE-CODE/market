@@ -6,7 +6,7 @@ interface id {
 const ProductDetails: React.FC<id> = ({ id }) => {
   return (
     <div>
-      <div>productDetails - {id}</div>
+      <div>productDetails {id}</div>
     </div>
   );
 };
