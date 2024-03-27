@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { useEffect, useState } from "react";
-import Loginpage from "../login/login";
 import Modal from "./modal";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,16 +9,12 @@ import { IconContext } from "react-icons";
 import NavBar from "./navBar";
 
 const Header = () => {
-  const [showModal, setShowModal] = useState(false);
-
   const search = () => {
     console.log("tried to search ");
   };
 
   return (
     <header className=" bg-[#514644]  sticky top-0 z-50 font-Dm-mono">
-      {showModal && <Modal hideModal={() => setShowModal(false)} />}
-
       <div className="bg-slate-100 py-5     ">
         <div className=" flex justify-between items-center px-1 max-w-[1184px] mx-auto gap-3   ">
           {" "}
@@ -53,17 +48,6 @@ const Header = () => {
           </div>
           <div>
             <NavBar />
-          </div>
-          <div className="hidden">
-            <button
-              // onClick={setShowModal(true)}
-              onClick={() => {
-                setShowModal(true);
-              }}
-              className=""
-            >
-              Login
-            </button>
           </div>
         </div>
       </div>
