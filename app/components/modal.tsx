@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import React from "react";
 import { createContext, useContext, useState } from "react";
-import Loginpage from "./login/login";
+import Loginpage from "../login/login";
 
 const modal = (props: { hideModal(): void }) => {
   return (

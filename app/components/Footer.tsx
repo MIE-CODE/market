@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Footer = () => {
+  const [date, setDate] = useState(0);
+
+  useEffect(() => {
+    const date = new Date();
+    const year = date.getFullYear();
+    setDate(year);
+  }, []);
   return (
     <div className="w-full sm:w-full place-self-end from-gray-600 to-gray-950 bg-gradient-to-b ">
-      <div className="p-[30px] pt-32 flex justify-between ">
+      {/* <div className="p-[30px] pt-32 flex justify-between ">
         <div className="">
           {" "}
           <p className=" text-3xl  text-gray-500">
@@ -80,9 +87,9 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
       <div className="w-full mt-[130px] h-[40px] flex justify-center items-center text-white bg-gray-950  ">
-        <p>© 2023 MIE Projects </p>
+        <p>© {date ? date : ""} MI-TECH. All rights reserved</p>
       </div>
     </div>
   );

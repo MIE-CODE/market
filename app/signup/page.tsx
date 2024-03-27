@@ -26,7 +26,7 @@ const SignupPage = () => {
 
   return (
     <main>
-      <div className="flex ">
+      <div className="flex  ">
         <div className=" flex  items-center bg-gradient-to-br from-slate-300 to-slate-500 flex-col  shadow-2xl border-[10px]   border-teal-950 w-[800px] h-[800px] rounded-xl ">
           <div className="flex items-baseline justify-center   p-10">
             {" "}

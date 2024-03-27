@@ -1,19 +1,19 @@
 "use client";
-import Image from "next/image";
-import Loginpage from "./login/login";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import Modal from "./modal";
-import Card from "./card";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import TopLine from "./components/topLine";
+import Main from "./components/Main";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 export default function Home() {
   return (
-    <main className=" bg-gradient-to-b relative  from-gray-300 to-gray-900 w-full   ">
-      <Header />
-      <Card />
-      <Footer />
-    </main>
+    <>
+      <SkeletonTheme baseColor="#cbd5e1" highlightColor="#e2e8f0">
+        <TopLine />
+        <Header />
+        <Main />
+        <Footer />
+      </SkeletonTheme>
+    </>
   );
 }
