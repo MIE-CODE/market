@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-import { useEffect, useState } from "react";
-import Modal from "./modal";
+
 import Link from "next/link";
 import Image from "next/image";
 import { FaBars, FaSearch, FaShoppingCart } from "react-icons/fa";
