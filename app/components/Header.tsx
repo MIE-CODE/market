@@ -8,10 +8,6 @@ import { IconContext } from "react-icons";
 import NavBar from "./navBar";
 
 const Header = () => {
-  const search = () => {
-    console.log("tried to search ");
-  };
-
   return (
     <header className=" bg-[#514644]  sticky top-0 z-50 font-Dm-mono">
       <div className="bg-slate-100 py-5     ">

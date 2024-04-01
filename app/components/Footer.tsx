@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Footer = () => {
@@ -9,86 +11,96 @@ const Footer = () => {
     setDate(year);
   }, []);
   return (
-    <div className="w-full sm:w-full place-self-end from-gray-600 to-gray-950 bg-gradient-to-b ">
-      {/* <div className="p-[30px] pt-32 flex justify-between ">
+    <div className="w-full sm:w-full place-self-end bg-slate-300 ">
+      <div className="p-10  flex justify-center gap-5 md:gap-28">
         <div className="">
-          {" "}
-          <p className=" text-3xl  text-gray-500">
-            {" "}
-            <span>Market</span> ||{" "}
-            <span className=" text-xl font-extrabold  text-yellow-700">
-              Homepage
-            </span>
-          </p>{" "}
+          <Link href="/">
+            <Image
+              className="w-28"
+              src="/images/logo.png"
+              alt="logo"
+              width={200}
+              height={200}
+            />
+          </Link>
         </div>
-        <div className="flex gap-[200px] text-white">
-          <ul className="flex flex-col gap-2 ">
-            <label htmlFor="" className=" font-extrabold text-3xl ">
-              Social Media
-            </label>
-            <li className="mt-10 flex gap-3">
-              <p>- </p>
-              <a href="#" className=" hover:underline">
-                {" "}
-                Instgram
-              </a>
-            </li>
-            <li className=" flex gap-3">
-              <p>- </p>
-              <a href="#" className=" hover:underline">
-                {" "}
-                Twitter
-              </a>
-            </li>
-            <li className=" flex gap-3">
-              <p>- </p>{" "}
-              <a href="#" className=" hover:underline">
-                {" "}
-                Facebook
-              </a>
-            </li>
-          </ul>
-          <ul>
-            <label htmlFor="#" className=" font-extrabold text-3xl ">
-              Services
-            </label>
-            <li className="mt-10 flex gap-3">
-              <p>- </p>{" "}
-              <a href="#" className=" hover:underline">
-                {" "}
-                dfgc
-              </a>
-            </li>
-            <li className=" flex gap-3">
-              <p>- </p>{" "}
-              <a href="#" className=" hover:underline">
-                {" "}
-                dfgc
-              </a>
-            </li>
-          </ul>
-          <ul>
-            <label htmlFor="#" className=" font-extrabold text-3xl ">
-              Links
-            </label>
-            <li className="mt-10 flex gap-3">
-              <p>- </p>{" "}
-              <a href="#" className=" hover:underline">
-                {" "}
-                dfgc
-              </a>
-            </li>
-            <li className=" flex gap-3 ">
-              <p>- </p>{" "}
-              <a href="#" className=" hover:underline">
-                {" "}
-                dfgc
-              </a>
-            </li>
-          </ul>
+        <div className="grid md:flex gap-[200px] ">
+          <div className="grid gap-7">
+            <p className="w-fit border-b-4 border-slate-900 text-lg">Company</p>
+            <div className="grid gap-5">
+              <Link
+                className="hover:text-slate-500 transition duration-200"
+                href="#"
+              >
+                How we operate
+              </Link>
+              <Link
+                className="hover:text-slate-500 transition duration-200"
+                href="#"
+              >
+                Our courses
+              </Link>
+              <Link
+                className="hover:text-slate-500 transition duration-200"
+                href="#"
+              >
+                Upcoming programs
+              </Link>
+            </div>
+          </div>
+          <div className="grid gap-7">
+            <p className="w-fit border-b-4 border-slate-900 text-lg">
+              Contact Us
+            </p>
+            <div className="grid gap-5">
+              <Link
+                className="hover:text-slate-500 transition duration-200"
+                href="#"
+              >
+                How we operate
+              </Link>
+              <Link
+                className="hover:text-slate-500 transition duration-200"
+                href="#"
+              >
+                Our courses
+              </Link>
+              <Link
+                className="hover:text-slate-500 transition duration-200"
+                href="#"
+              >
+                Upcoming programs
+              </Link>
+            </div>
+          </div>
+          <div className="grid gap-7">
+            <p className="w-fit border-b-4 border-slate-900 text-lg">
+              Follow Up
+            </p>
+            <div className="grid gap-5">
+              <Link
+                className="hover:text-slate-500 transition duration-200"
+                href="#"
+              >
+                How we operate
+              </Link>
+              <Link
+                className="hover:text-slate-500 transition duration-200"
+                href="#"
+              >
+                Our courses
+              </Link>
+              <Link
+                className="hover:text-slate-500 transition duration-200"
+                href="#"
+              >
+                Upcoming programs
+              </Link>
+            </div>
+          </div>
         </div>
-      </div> */}
-      <div className="w-full mt-[130px] h-[40px] flex justify-center items-center text-white bg-gray-950  ">
+      </div>
+      <div className="w-full h-[40px] flex justify-center items-center text-white bg-gray-500  ">
         <p>© {date ? date : ""} MI-TECH. All rights reserved</p>
       </div>
     </div>
