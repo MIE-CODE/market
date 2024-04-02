@@ -22,7 +22,7 @@ const Tray = () => {
 
     getItems();
   }, []);
-  const [Products, setProducts] = useState<ItemProducts[] | null>(null);
+  const [products, setProducts] = useState<ItemProducts[] | null>(null);
   interface ItemProducts {
     id: number;
     name: string;
@@ -42,8 +42,8 @@ const Tray = () => {
   return (
     <>
       <Show_case />
-      {Products ? (
-        <Display items={Products} name="food" />
+      {products ? (
+        <Display items={products} name="food" />
       ) : (
         <div>no products</div>
       )}

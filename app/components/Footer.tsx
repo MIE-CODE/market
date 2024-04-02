@@ -43,7 +43,9 @@ const Footer = () => {
         </div>
         <div className="grid gap-10 md:flex md:gap-[100px]  lg:gap-[150px] ">
           <div className="flex flex-col  gap-5 md:gap-7">
-            <p className="w-fit border-b-4 border-slate-900 text-lg">Company</p>
+            <p className="w-fit border-b-4 border-slate-900 text-lg font-medium">
+              Company
+            </p>
             <div className="grid gap-2 md:gap-5">
               <Link
                 className="hover:text-slate-500 whitespace-nowrap transition duration-200"
@@ -66,7 +68,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col gap-5 md:gap-7">
-            <p className="w-fit border-b-4 border-slate-900 text-lg">
+            <p className="w-fit border-b-4 border-slate-900 text-lg font-medium">
               Contact Us
             </p>
             <div className="grid md:gap-2 gap-5">
@@ -91,7 +93,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col gap-7">
-            <p className="w-fit border-b-4 border-slate-900 text-lg">
+            <p className="w-fit border-b-4 border-slate-900 text-lg font-medium">
               Follow Up
             </p>
             <div className="flex text-2xl gap-5 text-slate-800">
