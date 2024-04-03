@@ -3,24 +3,24 @@ import React from "react";
 
 import Link from "next/link";
 import Image from "next/image";
-import { FaBars, FaSearch, FaShoppingCart } from "react-icons/fa";
+import { FaBars, FaHamburger, FaSearch, FaShoppingCart } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import NavBar from "./navBar";
 
 const Header = () => {
   return (
-    <header className=" bg-[#514644]  sticky top-0 z-50 font-Dm-mono">
+    <header className=" bg-[#514644]  sticky top-0 z-50 font-Dm-mono shadow-md shadow-slate-300">
       <div className="bg-slate-100 py-5     ">
-        <div className=" flex justify-between items-center px-1 max-w-[1184px] mx-auto gap-3   ">
+        <div className=" flex justify-between items-center px-3 max-w-[1300px] mx-auto gap-3   ">
           {" "}
           <div>
             <Link href={"/"}>
               <Image
-                className=" min-h-[10px] "
+                className=" w-16 md:w-24"
                 src="/images/logo.png"
                 alt="Preview Image"
                 width={100}
-                height={20}
+                height={100}
               />
             </Link>
           </div>
@@ -41,8 +41,11 @@ const Header = () => {
               </IconContext.Provider>
             </button>
           </div>
-          <div>
+          <div className="hidden lg:block">
             <NavBar />
+          </div>
+          <div className="text-xl text-slate-800 lg:hidden">
+            <FaBars />
           </div>
         </div>
       </div>
