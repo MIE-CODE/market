@@ -11,6 +11,8 @@ const Cart = () => {
   const [items, setItems] = useState<Items[] | null>(null);
   const [products, setProducts] = useState<Prod[] | null>(null);
   const [isLoading, setLoading] = useState(true);
+  const [summary, setSummary] = useState<number>();
+
   interface Items {
     id: string;
     title: string;
@@ -37,6 +39,7 @@ const Cart = () => {
     }
     getItems();
   }, []);
+  console.log(summary);
   useEffect(() => {
     async function getItems() {
       const url = "https://picsum.photos/v2/list?page=2&limit=6";
@@ -45,6 +48,10 @@ const Cart = () => {
     }
     getItems();
   }, []);
+  useEffect(() => {
+    const total = items?.reduce((acc, curr) => acc + curr.price, 0);
+    setSummary(total);
+  }, [items]);
   const itms = [...Array(4)];
 
   return isLoading ? (
@@ -153,15 +160,17 @@ const Cart = () => {
                 </div>
               );
             })}
-            <p className="font-extrabold border-t border-gray-200/50 py-3 text-slate-900">
-              CART SUMMARY
-            </p>
-            <div className="flex  justify-between items-center  py-3">
-              <p className="font-bold">Subtotal : 500,00</p>
+            <div>
+              <p className="py-5  font-extrabold border-t border-gray-200/50  text-slate-900">
+                CART SUMMARY
+              </p>
+              <div className="flex  justify-between items-center  py-3">
+                <p className="font-bold">Subtotal : ₦ {summary} </p>
 
-              <button className="text-center bg-slate-600 px-2  rounded shadow-md shadow-slate-400 text-slate-200 font-semibold  py-2">
-                CHECKOUT (500,00)
-              </button>
+                <button className="text-center bg-slate-600 active:bg-slate-800 hover:bg-slate-700 px-2  rounded shadow-md shadow-slate-400 text-slate-200 font-semibold  py-2 transition duration-200 ease-in-out">
+                  CHECKOUT (₦ {summary})
+                </button>
+              </div>
             </div>
           </div>
         ) : (
