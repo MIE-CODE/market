@@ -101,7 +101,7 @@ const Cart = () => {
         {items ? (
           <div className="flex flex-col px-3 md:px-10  rounded my-10     bg-slate-300 shadow-xl shadow-slate-200">
             <div className=" py-4 ">
-              <p className="font-extrabold text-slate-700 text-base md:text-xl">
+              <p className="font-extrabold text-slate-900 text-base md:text-xl">
                 Cart ({items?.length})
               </p>
             </div>
@@ -153,6 +153,16 @@ const Cart = () => {
                 </div>
               );
             })}
+            <p className="font-extrabold border-t border-gray-200/50 py-3 text-slate-900">
+              CART SUMMARY
+            </p>
+            <div className="flex  justify-between items-center  py-3">
+              <p className="font-bold">Subtotal : 500,00</p>
+
+              <button className="text-center bg-slate-600 px-2  rounded shadow-md shadow-slate-400 text-slate-200 font-semibold  py-2">
+                CHECKOUT (500,00)
+              </button>
+            </div>
           </div>
         ) : (
           <div className="flex flex-col  items-center rounded text-center my-10 py-5 lg:py-10  gap-10 bg-slate-300 shadow-lg shadow-slate-400">
