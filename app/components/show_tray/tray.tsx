@@ -2,22 +2,32 @@ import React, { useState, useEffect } from "react";
 import Show_case from "./show_case";
 import Show_tray from "./show_tray";
 import Display from "./Display";
-import axios from "axios";
 import Skeleton from "react-loading-skeleton";
+import { Product } from "@/app/helpers/types";
+import { useStore } from "@/app/context/productsContext";
 
-const Tray = () => {
+const Tray = (props: { products?: Product[] }) => {
+  const { state } = useStore();
+
   const [moreproduct, setMoreProducts] = useState<items[] | null>(null);
   interface items {
     id: number;
-    name: string;
-    image: string;
     title: string;
+    price: string;
+    category: string;
+    description: string;
+    image: string;
   }
   useEffect(() => {
     async function getItems() {
-      const url = "https://course-api.com/react-store-products";
-      const response = await axios.get<items[]>(url);
-      setMoreProducts(response.data);
+      try {
+        const url = "https://fakestoreapi.com/products";
+        const response = await fetch(url);
+        const data = await response.json();
+        setMoreProducts(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     getItems();
@@ -31,9 +41,9 @@ const Tray = () => {
   }
   useEffect(() => {
     async function getItems() {
-      const url = "https://picsum.photos/v2/list?page=2&limit=6";
-      const response = await axios.get<ItemProducts[]>(url);
-      setProducts(response.data);
+      const response = await fetch("https://fakestoreapi.com/products");
+      const data = await response.json();
+      setProducts(data);
     }
 
     getItems();
@@ -43,7 +53,7 @@ const Tray = () => {
     <>
       <Show_case />
       {products ? (
-        <Display items={products} name="food" />
+        <Display products={state.products} />
       ) : (
         <div>no products</div>
       )}

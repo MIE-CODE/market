@@ -15,9 +15,15 @@ module.exports = {
       },
       {
         protocol: "https",
-        hostname: "picsum.photos",
+        hostname: "fakestoreapi.com",
         port: "",
         pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "https://dummyjson.com/",
+        port: "",
+        pathname: "/products",
       },
     ],
   },

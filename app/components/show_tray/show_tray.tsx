@@ -14,9 +14,12 @@ interface CustomLeftArrowProps extends ArrowProps {}
 interface CustomRightArrowProps extends ArrowProps {}
 //End interface
 interface Item {
-  image: string;
-  name: string;
   id: number;
+  title: string;
+  price: string;
+  category: string;
+  description: string;
+  image: string;
 }
 interface Product {
   items: Item[];
@@ -94,11 +97,12 @@ const Show_tray: React.FC<Product> = ({ items }) => {
                     loading="lazy"
                     width={200}
                     height={300}
-                    alt={item.name}
+                    alt={item.title}
                   />
 
                   <p className=" text-center py-3 text-xs md:text-sm  font-extrabold  ">
-                    {item.name || <Skeleton />}
+                    {(item.title.length >= 10 &&
+                      item.title.slice(0, 10).concat("...")) || <Skeleton />}
                   </p>
                 </Link>
               </div>
