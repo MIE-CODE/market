@@ -5,9 +5,15 @@ import About from "./About";
 
 import Tray from "./show_tray/tray";
 import { useStore } from "../context/productsContext";
+import { useAuthContext } from "../context/AuthContext";
+import { redirect } from "next/navigation";
 
 const Main = () => {
   const { state, dispatch } = useStore();
+  const { state: userState } = useAuthContext();
+  useEffect(() => {
+    if (!userState.user) return redirect("/login");
+  }, [userState]);
   useEffect(() => {
     async function getProducts() {
       try {

@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-
 import Link from "next/link";
 import Image from "next/image";
 import { FaBars, FaHamburger, FaSearch, FaShoppingCart } from "react-icons/fa";

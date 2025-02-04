@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import TopLine from "./components/topLine";
 import Main from "./components/Main";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { ToastContainer } from "react-toastify";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <TopLine />
         <Header />
         <Main />
+        <ToastContainer />
         <Footer />
       </SkeletonTheme>
     </>

@@ -4,11 +4,8 @@ import Show_tray from "./show_tray";
 import Display from "./Display";
 import Skeleton from "react-loading-skeleton";
 import { Product } from "@/app/helpers/types";
-import { useStore } from "@/app/context/productsContext";
 
 const Tray = (props: { products?: Product[] }) => {
-  const { state } = useStore();
-
   const [moreproduct, setMoreProducts] = useState<items[] | null>(null);
   interface items {
     id: number;
@@ -32,16 +29,14 @@ const Tray = (props: { products?: Product[] }) => {
 
     getItems();
   }, []);
-  const [products, setProducts] = useState<ItemProducts[] | null>(null);
-  interface ItemProducts {
-    id: number;
-    name: string;
-    download_url: string;
-    title: string;
-  }
+  const [products, setProducts] = useState<Product[] | null>(null);
+
   useEffect(() => {
     async function getItems() {
       const response = await fetch("https://fakestoreapi.com/products");
+      if (!response.ok) {
+        return;
+      }
       const data = await response.json();
       setProducts(data);
     }
@@ -52,11 +47,7 @@ const Tray = (props: { products?: Product[] }) => {
   return (
     <>
       <Show_case />
-      {products ? (
-        <Display products={state.products} />
-      ) : (
-        <div>no products</div>
-      )}
+      {products ? <Display products={products} /> : <div>no products</div>}
 
       {moreproduct ? (
         <Show_tray items={moreproduct} />

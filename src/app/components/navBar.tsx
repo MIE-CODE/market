@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FaArrowDown, FaChevronDown, FaPlus, FaUser } from "react-icons/fa";
 import { FaCartShopping, FaCircleQuestion } from "react-icons/fa6";
 import classnames from "classnames";
-import { useAuthContext } from "../context/AuthContext";
+import { useAuthContext } from "../../context/AuthContext";
 
 function NavBar() {
   const [dropDown, setDropDown] = useState<boolean>(false);

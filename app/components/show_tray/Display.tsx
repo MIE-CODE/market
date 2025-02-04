@@ -4,19 +4,20 @@ import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import { Product } from "@/app/helpers/types";
 
-const Display = (props: { products: Product[] }) => {
+const Display = (props: { products: Product[]; name?: string }) => {
   return (
     <>
       <div className="my-10 bg-slate-100 rounded font-Josefin-Sans ">
         <div className="py-3 bg-slate-400/50 rounded-t font-bold text-center text-[1.3rem]">
-          Products
+          {props.name ?? "Products"}
         </div>
         {props.products ? (
           <div className="grid grid-cols-6  h-fit justify-between overflow-hidden items-center gap-5 py-3 px-3">
             {props.products.map((item, index) => (
               <div
                 key={index}
-                className=" h-full    bg-slate-500/10 shadow hover:scale-[1.04] rounded  transition ease-in-out duration-300"
+                onClick={() => {}}
+                className=" h-full    bg-slate-500/10 shadow active:scale-100 cursor-pointer active:shadow-none hover:scale-[1.04] rounded  transition ease-in-out duration-300"
               >
                 <div
                   style={{
