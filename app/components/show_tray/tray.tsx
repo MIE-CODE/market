@@ -4,6 +4,7 @@ import Show_tray from "./show_tray";
 import Display from "./Display";
 import Skeleton from "react-loading-skeleton";
 import { Product } from "@/app/helpers/types";
+import { toast } from "react-toastify";
 
 const Tray = (props: { products?: Product[] }) => {
   const [moreproduct, setMoreProducts] = useState<items[] | null>(null);
@@ -23,7 +24,7 @@ const Tray = (props: { products?: Product[] }) => {
         const data = await response.json();
         setMoreProducts(data);
       } catch (error) {
-        console.log(error);
+        toast.error(error as string);
       }
     }
 
@@ -47,7 +48,6 @@ const Tray = (props: { products?: Product[] }) => {
   return (
     <>
       <Show_case />
-      {products ? <Display products={products} /> : <div>no products</div>}
 
       {moreproduct ? (
         <Show_tray items={moreproduct} />
@@ -60,7 +60,29 @@ const Tray = (props: { products?: Product[] }) => {
           <Skeleton width={200} height={250} />
         </div>
       )}
-      {moreproduct ? <Show_tray items={moreproduct} /> : <div>no items</div>}
+      {products ? (
+        <Display />
+      ) : (
+        <div className="flex  my-3 gap-8 justify-center w-full">
+          <Skeleton width={200} height={250} />
+          <Skeleton width={200} height={250} />
+          <Skeleton width={200} height={250} />
+          <Skeleton width={200} height={250} />
+          <Skeleton width={200} height={250} />
+        </div>
+      )}
+
+      {moreproduct ? (
+        <Show_tray items={moreproduct} />
+      ) : (
+        <div className="flex  my-3 gap-8 justify-center w-full">
+          <Skeleton width={200} height={250} />
+          <Skeleton width={200} height={250} />
+          <Skeleton width={200} height={250} />
+          <Skeleton width={200} height={250} />
+          <Skeleton width={200} height={250} />
+        </div>
+      )}
     </>
   );
 };

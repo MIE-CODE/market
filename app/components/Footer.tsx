@@ -38,6 +38,10 @@ const Footer = () => {
               alt="logo"
               width={200}
               height={200}
+              sizes="
+		/_next/image?url=%2Fimages%2Flogo.png&w=256&q=75 1x,
+		/_next/image?url=%2Fimages%2Flogo.png&w=640&q=75 2x
+	"
             />
           </Link>
         </div>

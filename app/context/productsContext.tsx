@@ -6,10 +6,10 @@ import React, {
   useContext,
   useReducer,
 } from "react";
-import { Product } from "../helpers/types";
+import { Product, ProductResponse } from "../helpers/types";
 type StoreState = { products: Product[] };
 type StoreAction =
-  | { type: "SET_PRODUCTS"; payload: Product[] }
+  | { type: "SET_PRODUCTS"; payload: ProductResponse }
   | { type: "SET_PRODUCT"; payload: Product }
   | { type: "SET_CART"; payload: Product }
   | { type: "REMOVE_PRODUCT"; payload: Product };
@@ -17,7 +17,7 @@ type StoreAction =
 export const storeReducer = (state: StoreState, action: StoreAction) => {
   switch (action.type) {
     case "SET_PRODUCTS":
-      return { products: action.payload };
+      return { products: action.payload.products };
     default:
       return state;
   }

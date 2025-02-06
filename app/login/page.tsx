@@ -3,6 +3,7 @@ import { FormEvent, useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import Link from "next/link";
 import classNames from "classnames";
+import { Spinner } from "../components/spinner/spinner.component";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -60,12 +61,12 @@ export default function Login() {
             className="bg-slate-700 rounded py-2 mt-6 text-slate-200 font-bold text-lg"
             disabled={isLoading}
           >
-            Login
+            {isLoading ? <Spinner className="after:w-5 after:h-5" /> : "Login"}
           </button>
           <p>
             Don&apos;t have an Account?{" "}
             <Link className="text-blue-300" href="/register">
-              Login
+              Register
             </Link>
           </p>
         </form>

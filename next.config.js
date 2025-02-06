@@ -25,6 +25,12 @@ module.exports = {
         port: "",
         pathname: "/products",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.dummyjson.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

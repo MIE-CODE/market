@@ -1,10 +1,12 @@
 "use client";
-import Show_tray from "@/app/components/show_tray/show_tray";
+import Display from "@/app/components/show_tray/Display";
 import { useStore } from "@/app/context/productsContext";
 import { Product } from "@/app/helpers/types";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { FaPhone, FaStar } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
+import { toast } from "react-toastify";
 interface id {
   id: number | string;
 }
@@ -24,24 +26,38 @@ const ProductDetails: React.FC<id> = ({ id }) => {
 
   useEffect(() => {
     async function getItems() {
-      const url = `https://fakestoreapi.com/products/${id}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      setProduct(data);
+      try {
+        const url = `https://dummyjson.com/products/${id}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        if (!response.ok) {
+          toast.error("failed to fetch");
+          console.log(data.error);
+        }
+        if (response.ok) {
+          setProduct(data);
+          console.log(data);
+        }
+      } catch (error) {
+        toast.error("fialed to fetch");
+      }
     }
     getItems();
   }, [id]);
 
   return (
-    <>
-      <div className="grid md:flex justify-center  mx-auto  min-w-[200px]  max-w-[1600px] px-2 py-10 gap-2 ">
-        <div
-          style={{ backgroundImage: `url(${product?.image})` }}
-          className="md:w-[60%] shadow-lg shadow-slate-300  hover:opacity-90 transition duration-300  h-[400px] md:h-[600px]   bg-center bg-no-repeat r rounded"
-        >
-          <div className=""></div>
+    <div className=" px-2">
+      <div className="grid md:flex   mx-auto  min-w-[200px]  max-w-[1600px] py-10 gap-2 ">
+        <div className=" flex justify-center items-center w-full md:w-[50%] shadow-lg shadow-slate-300  hover:opacity-90 transition duration-300  h-[400px] overflow-hidden   bg-center bg-no-repeat r rounded">
+          <div className="relative w-[400px] h-[400px]">
+            <Image
+              src={product?.images[0] ?? ""}
+              alt={product?.title ?? ""}
+              fill
+            />
+          </div>
         </div>
-        <div className="md:w-[40%]  bg-slate-200 px-2 py-5 md:border-l-8 border-l-slate-700 shadow-lg shadow-slate-300 md:rounded-e-md">
+        <div className="md:w-[50%]  bg-slate-200 px-2 py-5 md:border-l-8 border-l-slate-700 shadow-lg shadow-slate-300 md:rounded-e-md">
           <div className=" border-b-2 pb-3">
             <p> {product?.title} </p>
             <p>
@@ -54,15 +70,14 @@ const ProductDetails: React.FC<id> = ({ id }) => {
           </div>
           <div className="border-b-2 py-3 flex flex-col gap-2">
             <p className="font-bold text-lg">
-              $ {product?.price?.toLocaleString()}{" "}
+              &#8358; {(Math.floor(product?.price ?? 0) * 100).toLocaleString()}
             </p>
             <p
               className={`${
                 product?.title ? "font-semibold" : "bg-[#a29e9e] pl-2"
               } `}
             >
-              {" "}
-              {product?.title ? "In stock" : "Out of stock"}{" "}
+              {product?.availabilityStatus}
             </p>
             <div className=" flex  items-center gap-5">
               <div className="flex ">
@@ -73,7 +88,7 @@ const ProductDetails: React.FC<id> = ({ id }) => {
                     <div key={index}>
                       <FaStar
                         color={
-                          currenRating <= (product?.id || 0)
+                          currenRating <= (product?.rating || 0)
                             ? "#e07e1b"
                             : "#a29e9e"
                         }
@@ -107,7 +122,8 @@ const ProductDetails: React.FC<id> = ({ id }) => {
           </div>
         </div>
       </div>
-    </>
+      <Display name="More Products" slice={0} />
+    </div>
   );
 };
 

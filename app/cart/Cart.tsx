@@ -6,10 +6,12 @@ import Link from "next/link";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { FaTrashCan } from "react-icons/fa6";
 import Skeleton from "react-loading-skeleton";
+import { useGetProducts } from "../hooks/useGetProducts";
+import { useStore } from "../context/productsContext";
 
 const Cart = () => {
   const [items, setItems] = useState<Items[] | null>(null);
-  const [products, setProducts] = useState<Prod[] | null>(null);
+  const { state } = useStore();
   const [isLoading, setLoading] = useState(true);
   const [summary, setSummary] = useState<number>();
 
@@ -40,19 +42,20 @@ const Cart = () => {
     getItems();
   }, []);
   console.log(summary);
-  useEffect(() => {
-    async function getItems() {
-      const url = "https://picsum.photos/v2/list?page=2&limit=6";
-      const response = await axios.get<Prod[]>(url);
-      setProducts(response.data);
-    }
-    getItems();
-  }, []);
+
   useEffect(() => {
     const total = items?.reduce((acc, curr) => acc + curr.price, 0);
     setSummary(total);
   }, [items]);
   const itms = [...Array(4)];
+
+  const { getProducts } = useGetProducts();
+  useEffect(() => {
+    const loadProducts = async () => {
+      await getProducts();
+    };
+    loadProducts();
+  }, [getProducts]);
 
   return isLoading ? (
     <main className="mx-auto w-screen  xl:w-[1300px] px-2  md:px-5 text-xs md:text-base ">
@@ -199,11 +202,7 @@ const Cart = () => {
           </div>
         )}
 
-        {products ? (
-          <Display items={products} name="More items" />
-        ) : (
-          <div>no products</div>
-        )}
+        {state.products ? <Display /> : <div>no products</div>}
       </main>
     </>
   );

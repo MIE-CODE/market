@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import Skeleton from "react-loading-skeleton";
-
+import { toast } from "react-toastify";
 const Show_case = () => {
   const [items, setItems] = useState<items[] | null>(null);
   interface items {
@@ -22,7 +22,7 @@ const Show_case = () => {
         const data = await response.json();
         setItems(data);
       } catch (error) {
-        console.log(error);
+        toast.error(error as String);
       }
     }
 
@@ -101,6 +101,10 @@ const Show_case = () => {
                 height={200}
                 src={"/images/technology.jpeg"}
                 alt="technology"
+                sizes="
+		/_next/image?url=%2Fimages%2Ftechnology.jpeg&w=256&q=75 1x,
+		/_next/image?url=%2Fimages%2Ftechnology.jpeg&w=640&q=75 2x
+	"
                 className="w-full h-full  rounded "
               />
             </Link>
